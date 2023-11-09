@@ -1,6 +1,5 @@
 #!/usr/bin/python3
+#source code in order to switch value of a and b
 def switch_values(a, b):
-    # Your code goes here (1 line)
     a, b = b, a
-    # End of your code
     return a, b
