@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-import sys
-def safe_print_integer_err(value):
-    """Prints an integer with "{:d}".format().
-
-    If a ValueError message is caught, a corresponding
-    message is printed to standard error.
+def safe_print_list_integers(my_list=[], x=0):
+    """Print the first x elements of a list that are integers.
 
     Args:
-        value (int): The integer to print.
+        my_list (list): The list to print elements from.
+        x (int): The number of elements of my_list to print.
 
     Returns:
-        If a TypeError or ValueError occurs - False.
-        Otherwise - True.
+        The number of elements printed.
     """
-    try:
-        print("{:d}".format(value))
-        return (True)
-    except (TypeError, ValueError):
-        print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
-        return (False)
+    ret = 0
+    for i in range(0, x):
+        try:
+            print("{:d}".format(my_list[i]), end="")
+            ret += 1
+        except (ValueError, TypeError):
+            continue
+    print("")
+    return (ret)
