@@ -1,0 +1,10 @@
+#tests/basegeometry
+
+# Test Case 3: Testing integer_validator method with non-integer input
+## Given a non-integer input, the integer_validator method should raise a TypeError
+Input:
+- name: "height"
+- value: "string"
+
+Expected Output:
+- TypeError with the message "height must be an integer"
