@@ -1,5 +1,2 @@
---creates first_table in the current database
-CREATE TABLE IF NOT EXISTS first_table(
-    id INT,
-    name VARCHAR(256)
-);
+-- Building first_table with values id and name.
+CREATE TABLE IF NOT EXISTS `first_table` (`id` INT, `name` VARCHAR(256));
