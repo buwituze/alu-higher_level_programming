@@ -1,17 +1,13 @@
 #!/usr/bin/python3
-"""
-This module fetches the status from a url.
-"""
-from urllib.request import urlopen, Request
+"""Fetches a URL."""
+import urllib.request as request
+
 
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
-    req = Request(url)
-
-    with urlopen(req) as response:
-        body = response.read()
-
-    print("Body response:")
-    print("\t- type: {}".format(type(body)))
-    print("\t- content: {}".format(body))
-    print("\t- utf8 content: {}".format(body.decode("utf-8")))
+    with request.urlopen("https://intranet.hbtn.io/status") as response:
+        if response.readable():
+            data = response.read()
+            print("Body response:")
+            print("\t- type: {}".format(type(data)))
+            print("\t- content: {}".format(data))
+            print("\t- utf8 content: {}".format(data.decode("utf-8")))
