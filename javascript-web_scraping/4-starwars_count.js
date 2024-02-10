@@ -9,7 +9,6 @@ request(url, function (err, response, body) {
   if (!err) {
     const { results } = JSON.parse(body);
 
-    // Using reduce to count movies with characterId 18
     const count = results.reduce((count, film) => {
       const hasCharacterWithId18 = film.characters.find((character) => character.endsWith(`/api/people/${characterId}/`));
       return hasCharacterWithId18 ? count + 1 : count;
