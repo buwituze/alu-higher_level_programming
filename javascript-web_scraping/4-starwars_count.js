@@ -1,19 +1,20 @@
 #!/usr/bin/node
 
 const request = require('request');
-
 const url = process.argv[2];
-const characterId = 18;
+let count = 0;
+let data;
 
-request(url, function (err, response, body) {
-  if (!err) {
-    const { results } = JSON.parse(body);
-
-    const count = results.reduce((count, film) => {
-      const hasCharacterWithId18 = film.characters.find((character) => character.endsWith(`/api/people/${characterId}/`));
-      return hasCharacterWithId18 ? count + 1 : count;
-    }, 0);
-
-    console.log(count);
+request.get(url, function (err, res) {
+  if (err) {
+    console.log(err);
+  } else {
+    data = JSON.parse(res.body).results;
+    data.forEach((obj) => {
+      obj.characters.forEach((character) => {
+        if (character.includes('/18/')) count++;
+      });
+    });
   }
+  console.log(count);
 });
