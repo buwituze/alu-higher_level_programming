@@ -1,14 +1,11 @@
-t request = require('request');
+#!/usr/bin/node
+const request = require('request');
 const fs = require('fs');
-const args = process.argv.slice(2);
-request(args[0], (error, response, body) => {
+request(process.argv[2], function (error, response, body) {
 	  if (error) {
 		      console.log(error);
 		    } else {
-			        fs.writeFile(args[1], body, 'utf8', (error) => {
-					      if (error) {
-						              console.log(error);
-						            }
-					    });
+			        const data = body;
+			        fs.writeFileSync(process.argv[3], data, 'utf8');
 			      }
 });
