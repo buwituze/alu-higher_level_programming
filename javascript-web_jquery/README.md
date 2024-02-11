@@ -1,1 +1,1 @@
-Exploring jquery
+Exploring jquery.
